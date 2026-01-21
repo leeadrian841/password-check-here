@@ -198,5 +198,6 @@ export function analyzePassword(password) {
     vulnerabilities,
     suggestions,
     hasPatterns,
+    isBreached,
   };
 }
