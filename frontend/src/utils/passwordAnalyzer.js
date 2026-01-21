@@ -80,6 +80,16 @@ export function analyzePassword(password) {
   const vulnerabilities = [];
   const suggestions = [];
   let score = 0;
+  let isBreached = false;
+  
+  // Check if password is in breach database
+  if (BREACHED_PASSWORDS.includes(password.toLowerCase()) || 
+      BREACHED_PASSWORDS.includes(password)) {
+    isBreached = true;
+    vulnerabilities.push('⚠️ CRITICAL: This password was found in breach databases');
+    suggestions.push('IMMEDIATELY change this password - it has been compromised in data breaches');
+    score -= 50; // Heavy penalty for breached passwords
+  }
   
   // Length scoring
   if (length < 8) {
