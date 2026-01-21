@@ -6,6 +6,22 @@ const COMMON_PASSWORDS = [
   'password1', 'password123', 'admin', 'welcome', 'login', 'admin123', 'root', 'toor',
 ];
 
+// Expanded breach database - simulating real breach databases like HaveIBeenPwned
+const BREACHED_PASSWORDS = [
+  // Top breached passwords from real data breaches
+  'password', '123456', '12345678', 'qwerty', 'abc123', '111111', 'monkey', '1234567',
+  'letmein', 'trustno1', 'dragon', 'baseball', 'iloveyou', 'master', 'sunshine',
+  'ashley', 'bailey', 'passw0rd', 'shadow', '123123', '654321', 'superman', 'qazwsx',
+  'michael', 'football', 'password1', 'password123', 'admin', 'welcome', 'login',
+  'admin123', 'root', 'toor', 'pass', 'test', 'guest', 'info', 'adm', 'mysql',
+  'user', 'administrator', 'oracle', 'ftp', 'pi', 'puppet', 'ansible', 'ec2-user',
+  'vagrant', 'azureuser', 'academico', 'acceso', 'access', 'accounting', 'action',
+  'admin1', 'admin123456', 'administrator1', 'adobe123', 'adslolitec', 'adtran',
+  'password!', 'password1!', 'Password1', 'Password123', 'Qwerty123', 'Abc123',
+  '123456789', '1234567890', '12345', '123456a', '1234abcd', 'a123456', 'password1234',
+  'qwerty123', 'qwertyuiop', 'asdfghjkl', 'zxcvbnm', 'iloveyou1', 'welcome1',
+];
+
 const COMMON_PATTERNS = [
   /^(.)\1+$/, // All same characters
   /^(012|123|234|345|456|567|678|789|890)+/, // Sequential numbers
