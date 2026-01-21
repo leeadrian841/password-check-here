@@ -25,11 +25,6 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full mb-6 animate-float">
-              <div className="w-2 h-2 bg-accent rounded-full animate-pulse-glow"></div>
-              <span className="text-sm font-medium text-primary">AI-Powered Security Analysis</span>
-            </div>
-            
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-foreground via-primary to-accent bg-clip-text text-transparent leading-tight">
               Test Your Password
               <br />
