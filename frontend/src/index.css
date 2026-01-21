@@ -1,75 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
     margin: 0;
-    font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family:
-        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 @layer base {
     :root {
-        --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
+        /* Cybersecurity color palette - Tech Blue & Electric Green theme */
+        --background: 220 18% 97%;
+        --foreground: 220 20% 12%;
+        
+        /* Card & Surface colors */
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
+        --card-foreground: 220 20% 12%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
+        --popover-foreground: 220 20% 12%;
+        
+        /* Primary - Tech Blue */
+        --primary: 220 76% 48%;
+        --primary-foreground: 0 0% 100%;
+        --primary-glow: 220 76% 58%;
+        
+        /* Secondary - Deep Tech Blue */
+        --secondary: 248 78% 24%;
+        --secondary-foreground: 0 0% 100%;
+        
+        /* Accent - Electric Green */
+        --accent: 142 76% 45%;
+        --accent-foreground: 0 0% 100%;
+        --accent-glow: 142 76% 55%;
+        
+        /* Status colors */
+        --muted: 220 14% 96%;
+        --muted-foreground: 220 10% 45%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --warning: 38 92% 50%;
+        --warning-foreground: 0 0% 100%;
+        --success: 142 76% 45%;
+        --success-foreground: 0 0% 100%;
+        
+        /* Strength level colors */
+        --strength-weak: 0 84% 60%;
+        --strength-fair: 38 92% 50%;
+        --strength-good: 45 93% 47%;
+        --strength-strong: 142 76% 45%;
+        --strength-excellent: 160 84% 39%;
+        
+        /* UI Elements */
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 220 76% 48%;
+        --radius: 0.75rem;
+        
+        /* Custom design tokens */
+        --gradient-primary: linear-gradient(135deg, hsl(220 76% 48%) 0%, hsl(248 78% 24%) 100%);
+        --gradient-accent: linear-gradient(135deg, hsl(142 76% 45%) 0%, hsl(160 84% 39%) 100%);
+        --gradient-hero: linear-gradient(180deg, hsl(220 18% 97%) 0%, hsl(220 25% 92%) 100%);
+        --gradient-weak: linear-gradient(90deg, hsl(0 84% 60%) 0%, hsl(0 84% 70%) 100%);
+        --gradient-fair: linear-gradient(90deg, hsl(38 92% 50%) 0%, hsl(38 92% 60%) 100%);
+        --gradient-good: linear-gradient(90deg, hsl(45 93% 47%) 0%, hsl(45 93% 57%) 100%);
+        --gradient-strong: linear-gradient(90deg, hsl(142 76% 45%) 0%, hsl(142 76% 55%) 100%);
+        --gradient-excellent: linear-gradient(90deg, hsl(160 84% 39%) 0%, hsl(142 76% 45%) 100%);
+        
+        /* Shadows */
+        --shadow-elegant: 0 10px 30px -10px hsl(220 76% 48% / 0.2);
+        --shadow-glow: 0 0 40px hsl(220 76% 58% / 0.3);
+        --shadow-accent-glow: 0 0 40px hsl(142 76% 55% / 0.3);
+        --shadow-card: 0 2px 8px hsl(220 20% 12% / 0.08);
+        
+        /* Animations */
+        --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     }
+    
     .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+        --background: 220 20% 8%;
+        --foreground: 220 10% 95%;
+        
+        --card: 220 18% 12%;
+        --card-foreground: 220 10% 95%;
+        --popover: 220 18% 12%;
+        --popover-foreground: 220 10% 95%;
+        
+        --primary: 220 76% 58%;
+        --primary-foreground: 0 0% 100%;
+        --primary-glow: 220 76% 68%;
+        
+        --secondary: 248 60% 35%;
+        --secondary-foreground: 0 0% 100%;
+        
+        --accent: 142 76% 55%;
+        --accent-foreground: 0 0% 100%;
+        --accent-glow: 142 76% 65%;
+        
+        --muted: 220 18% 18%;
+        --muted-foreground: 220 10% 60%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
+        --warning: 38 92% 50%;
+        --warning-foreground: 0 0% 100%;
+        --success: 142 76% 55%;
+        --success-foreground: 0 0% 100%;
+        
+        --border: 220 18% 20%;
+        --input: 220 18% 20%;
+        --ring: 220 76% 58%;
+        
+        --gradient-hero: linear-gradient(180deg, hsl(220 20% 8%) 0%, hsl(220 25% 12%) 100%);
+        --shadow-elegant: 0 10px 30px -10px hsl(220 76% 58% / 0.4);
+        --shadow-glow: 0 0 50px hsl(220 76% 68% / 0.4);
+        --shadow-accent-glow: 0 0 50px hsl(142 76% 65% / 0.4);
+        --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.3);
     }
 }
 
@@ -79,6 +132,63 @@ code {
     }
     body {
         @apply bg-background text-foreground;
+    }
+}
+
+@layer components {
+    /* Password strength progress bar animations */
+    .strength-progress {
+        transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                    background 0.3s ease;
+    }
+    
+    /* Floating animation for hero elements */
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Pulse glow effect */
+    @keyframes pulse-glow {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+    
+    .animate-pulse-glow {
+        animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    /* Shimmer effect */
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+    
+    .animate-shimmer {
+        background: linear-gradient(
+            90deg,
+            transparent,
+            hsl(var(--primary) / 0.1),
+            transparent
+        );
+        background-size: 1000px 100%;
+        animation: shimmer 2s infinite;
     }
 }
 
@@ -112,4 +222,22 @@ code {
         border-top-color: inherit;
         border-bottom-color: inherit;
     }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary-glow));
 }
