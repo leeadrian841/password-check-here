@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Github, Twitter, Linkedin } from 'lucide-react';
+import { Shield, Github, Linkedin, Globe } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -17,23 +17,20 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Advanced AI-powered password strength checker. Test your passwords securely and privately in your browser.
+              Advanced password strength checker. Check your passwords securely and privately in your browser.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold text-foreground mb-4">Privacy & Security</h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-              All analysis happens in your browser. No passwords are stored or transmitted to any server. Your data remains 100% private.
+              Everything happens in your browser. No passwords are stored or transmitted to any server. Your data remains 100% private.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group">
-                <Github className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              <a href="https://leeadrian841.github.io/" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group">
+                <Globe className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group">
-                <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group">
+              <a href="https://www.linkedin.com/in/leeadrian841/" className="w-10 h-10 rounded-lg bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group">
                 <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
             </div>
@@ -41,7 +38,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2024 PasswordCheckHere. Built with security in mind. All rights reserved.</p>
+          <p>© 2026 PasswordCheckHere. Built with security in mind. All rights reserved.</p>
         </div>
       </div>
     </footer>
