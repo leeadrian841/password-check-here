@@ -9,7 +9,7 @@ A modern password strength checker with comprehensive breach database scanning.
 - **Character Diversity Analysis** - Checks for lowercase, uppercase, numbers, and special characters
 - **Estimated Breach Time** - Calculates how long AI would take to crack your password
 - **Security Recommendations** - Actionable suggestions to improve password strength
-- **100% Client-Side** - All analysis happens in your browser, no data sent to servers
+- **100% Client-Side** - Everything happens in your browser, no data sent to servers
 
 ## Live Demo
 
