@@ -112,17 +112,17 @@ export const PasswordChecker = () => {
       {/* Analysis Results */}
       {analysis && (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          {/* Breach Status - Most Important */}
+          {/* 1. Breach Status - Most Important */}
           <BreachStatus analysis={analysis} />
 
-          {/* Strength Meter */}
+          {/* 2. Password Strength with Character Analysis */}
           <StrengthMeter analysis={analysis} />
 
-          {/* Breach Timer */}
-          <BreachTimer analysis={analysis} />
+          {/* 3. Security Issues */}
+          <SecurityIssues analysis={analysis} />
 
-          {/* Detailed Analysis */}
-          <AnalysisDetails analysis={analysis} password={password} />
+          {/* 4. Estimated Breach Time */}
+          <BreachTimer analysis={analysis} />
         </div>
       )}
     </div>
