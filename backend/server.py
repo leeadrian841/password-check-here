@@ -39,6 +39,68 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+
+# Password breach check models
+class PasswordCheckRequest(BaseModel):
+    password: str
+
+
+class PasswordCheckResponse(BaseModel):
+    is_breached: bool
+    breach_count: int
+    message: str
+    source: str = "HaveIBeenPwned"
+
+
+# HaveIBeenPwned API helper function
+async def check_password_breach(password: str) -> tuple[bool, int]:
+    """
+    Check if a password has been pwned using HaveIBeenPwned's k-Anonymity API.
+    This ensures the full password is never sent over the network.
+    
+    Returns: (is_breached, breach_count)
+    """
+    # Create SHA-1 hash of the password (uppercase)
+    sha1_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+    
+    # k-Anonymity: only send first 5 chars of hash
+    prefix = sha1_hash[:5]
+    suffix = sha1_hash[5:]
+    
+    # Query HaveIBeenPwned API
+    url = f"https://api.pwnedpasswords.com/range/{prefix}"
+    
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.get(
+                url,
+                headers={
+                    "User-Agent": "PassGuard-AI-Password-Checker",
+                    "Add-Padding": "true"  # Enhanced privacy
+                },
+                timeout=10.0
+            )
+            response.raise_for_status()
+        except httpx.HTTPError as e:
+            logger.error(f"Error querying HaveIBeenPwned API: {e}")
+            raise HTTPException(status_code=503, detail="Unable to check password breach database")
+    
+    # Parse response and check for our hash suffix
+    # Response format: "SUFFIX:COUNT\r\nSUFFIX:COUNT\r\n..."
+    hashes = response.text.split('\r\n')
+    
+    for hash_entry in hashes:
+        if ':' in hash_entry:
+            entry_suffix, count = hash_entry.split(':')
+            if entry_suffix == suffix:
+                breach_count = int(count)
+                # Count of 0 indicates padding entry (ignore)
+                if breach_count > 0:
+                    return True, breach_count
+    
+    return False, 0
+
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
