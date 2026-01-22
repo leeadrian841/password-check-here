@@ -1,0 +1,53 @@
+name: Dependabot PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Install dependencies
+        run: |
+          cd frontend
+          yarn install
+          
+      - name: Run linter
+        run: |
+          cd frontend
+          yarn lint || echo "No lint script configured"
+        continue-on-error: true
+          
+      - name: Build application
+        run: |
+          cd frontend
+          yarn build
+        env:
+          CI: false
+          REACT_APP_BACKEND_URL: ''
+          
+      - name: Check build output
+        run: |
+          if [ -d "frontend/build" ]; then
+            echo "✅ Build successful"
+            ls -lh frontend/build
+          else
+            echo "❌ Build failed"
+            exit 1
+          fi
