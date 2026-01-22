@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       host: '0.0.0.0',
       strictPort: true,
+      allowedHosts: ['deps-update-1.preview.emergentagent.com', '.emergentagent.com', '.preview.emergentagent.com'],
     },
     preview: {
       port: 3000,
