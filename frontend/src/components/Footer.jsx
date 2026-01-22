@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer className="border-t border-border/40 bg-muted/30 py-12 px-4 mt-16">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
@@ -19,16 +19,6 @@ export const Footer = () => {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Advanced AI-powered password strength checker. Test your passwords securely and privately in your browser.
             </p>
-          </div>
-
-          <div>
-            <h4 className="font-semibold text-foreground mb-4">Features</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li className="hover:text-primary transition-colors cursor-pointer">AI Pattern Detection</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Real-Time Analysis</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Breach Database Check</li>
-              <li className="hover:text-primary transition-colors cursor-pointer">Entropy Calculation</li>
-            </ul>
           </div>
 
           <div>
