@@ -51,7 +51,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border/40 mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2024 PassGuard AI. Built with security in mind. All rights reserved.</p>
+          <p>© 2024 PasswordCheckHere. Built with security in mind. All rights reserved.</p>
         </div>
       </div>
     </footer>
