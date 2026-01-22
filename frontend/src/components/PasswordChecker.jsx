@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Eye, EyeOff, RefreshCw, Copy, Check } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
@@ -11,20 +11,72 @@ import BreachTimer from './BreachTimer';
 import { analyzePassword } from '../utils/passwordAnalyzer';
 import { toast } from 'sonner';
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
+
 export const PasswordChecker = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [analysis, setAnalysis] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [breachData, setBreachData] = useState(null);
+  const [isCheckingBreach, setIsCheckingBreach] = useState(false);
+  const debounceTimerRef = useRef(null);
+
+  // Check password against HaveIBeenPwned via backend API
+  const checkPasswordBreach = useCallback(async (pwd) => {
+    if (!pwd || pwd.length < 1) {
+      setBreachData(null);
+      return;
+    }
+
+    setIsCheckingBreach(true);
+    try {
+      const response = await fetch(`${BACKEND_URL}/api/check-password-breach`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password: pwd }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setBreachData(data);
+      } else {
+        console.error('Failed to check password breach');
+        setBreachData(null);
+      }
+    } catch (error) {
+      console.error('Error checking password breach:', error);
+      setBreachData(null);
+    } finally {
+      setIsCheckingBreach(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (password) {
       const result = analyzePassword(password);
       setAnalysis(result);
+      
+      // Debounce the backend breach check to avoid too many requests
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+      debounceTimerRef.current = setTimeout(() => {
+        checkPasswordBreach(password);
+      }, 500); // Wait 500ms after user stops typing
     } else {
       setAnalysis(null);
+      setBreachData(null);
     }
-  }, [password]);
+
+    return () => {
+      if (debounceTimerRef.current) {
+        clearTimeout(debounceTimerRef.current);
+      }
+    };
+  }, [password, checkPasswordBreach]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(password);
