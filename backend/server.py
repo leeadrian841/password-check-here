@@ -130,6 +130,39 @@ async def get_status_checks():
     
     return status_checks
 
+
+@api_router.post("/check-password-breach", response_model=PasswordCheckResponse)
+async def check_password_breach_endpoint(request: PasswordCheckRequest):
+    """
+    Check if a password has been exposed in known data breaches.
+    
+    Uses HaveIBeenPwned's k-Anonymity API to safely check passwords
+    without exposing the actual password over the network.
+    """
+    if not request.password:
+        raise HTTPException(status_code=400, detail="Password cannot be empty")
+    
+    try:
+        is_breached, breach_count = await check_password_breach(request.password)
+        
+        if is_breached:
+            message = f"⚠️ This password has been found {breach_count:,} times in data breaches. Do not use this password!"
+        else:
+            message = "✓ This password was not found in any known data breaches."
+        
+        return PasswordCheckResponse(
+            is_breached=is_breached,
+            breach_count=breach_count,
+            message=message,
+            source="HaveIBeenPwned"
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error checking password breach: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error while checking password")
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
