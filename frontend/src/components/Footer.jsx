@@ -12,7 +12,7 @@ export const Footer = () => {
                 <Shield className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-foreground">PassGuard AI</h3>
+                <h3 className="text-xl font-bold text-foreground">PasswordCheckHere</h3>
                 <p className="text-xs text-muted-foreground">Security First</p>
               </div>
             </div>
