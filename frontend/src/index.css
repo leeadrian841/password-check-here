@@ -241,3 +241,10 @@ code {
 ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary-glow));
 }
+
+/* Hide Emergent badge */
+#emergent-badge,
+a[href*="emergent.sh"] {
+    display: none !important;
+    visibility: hidden !important;
+}
