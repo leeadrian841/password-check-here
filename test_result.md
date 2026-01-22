@@ -104,6 +104,19 @@
 
 user_problem_statement: "Test the PassGuard AI password strength checker application for all core functionality including password input, real-time analysis, strength meter, breach time estimates, character analysis, security issues detection, dark mode toggle, and responsive design."
 
+backend:
+  - task: "Password Breach Check API - HaveIBeenPwned Integration"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented POST /api/check-password-breach endpoint that uses HaveIBeenPwned k-Anonymity API to check if passwords have been exposed in breaches. Returns breach status and count."
+
 frontend:
   - task: "Password Input Field Functionality"
     implemented: true
