@@ -37,7 +37,7 @@ export const BreachTimer = ({ analysis }) => {
             {getIconForTime()}
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-foreground">AI Breach Time Estimate</h3>
+            <h3 className="text-lg font-semibold text-foreground">Estimated Breach Time</h3>
             <p className="text-sm text-muted-foreground">How fast could AI crack this password?</p>
           </div>
         </div>
