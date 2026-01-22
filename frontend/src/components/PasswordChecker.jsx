@@ -11,7 +11,7 @@ import BreachTimer from './BreachTimer';
 import { analyzePassword } from '../utils/passwordAnalyzer';
 import { toast } from 'sonner';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || '';
 
 export const PasswordChecker = () => {
   const [password, setPassword] = useState('');
