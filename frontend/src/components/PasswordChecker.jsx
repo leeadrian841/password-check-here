@@ -3,15 +3,13 @@ import { Eye, EyeOff, RefreshCw, Copy, Check } from 'lucide-react';
 import { Card } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Progress } from './ui/progress';
 import StrengthMeter from './StrengthMeter';
 import BreachStatus from './BreachStatus';
 import SecurityIssues from './SecurityIssues';
 import BreachTimer from './BreachTimer';
 import { analyzePassword } from '../utils/passwordAnalyzer';
+import { checkPasswordBreach } from '../utils/breachChecker';
 import { toast } from 'sonner';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || '';
 
 export const PasswordChecker = () => {
   const [password, setPassword] = useState('');
@@ -22,8 +20,8 @@ export const PasswordChecker = () => {
   const [isCheckingBreach, setIsCheckingBreach] = useState(false);
   const debounceTimerRef = useRef(null);
 
-  // Check password against HaveIBeenPwned via backend API
-  const checkPasswordBreach = useCallback(async (pwd) => {
+  // Check password against HaveIBeenPwned API directly from frontend
+  const performBreachCheck = useCallback(async (pwd) => {
     if (!pwd || pwd.length < 1) {
       setBreachData(null);
       return;
@@ -31,21 +29,9 @@ export const PasswordChecker = () => {
 
     setIsCheckingBreach(true);
     try {
-      const response = await fetch(`${BACKEND_URL}/api/check-password-breach`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ password: pwd }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setBreachData(data);
-      } else {
-        console.error('Failed to check password breach');
-        setBreachData(null);
-      }
+      // Call the breach checker which uses HaveIBeenPwned API directly
+      const result = await checkPasswordBreach(pwd);
+      setBreachData(result);
     } catch (error) {
       console.error('Error checking password breach:', error);
       setBreachData(null);
@@ -59,12 +45,12 @@ export const PasswordChecker = () => {
       const result = analyzePassword(password);
       setAnalysis(result);
       
-      // Debounce the backend breach check to avoid too many requests
+      // Debounce the breach check to avoid too many API requests
       if (debounceTimerRef.current) {
         clearTimeout(debounceTimerRef.current);
       }
       debounceTimerRef.current = setTimeout(() => {
-        checkPasswordBreach(password);
+        performBreachCheck(password);
       }, 500); // Wait 500ms after user stops typing
     } else {
       setAnalysis(null);
@@ -76,7 +62,7 @@ export const PasswordChecker = () => {
         clearTimeout(debounceTimerRef.current);
       }
     };
-  }, [password, checkPasswordBreach]);
+  }, [password, performBreachCheck]);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(password);
@@ -164,7 +150,7 @@ export const PasswordChecker = () => {
       {/* Analysis Results */}
       {analysis && (
         <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          {/* 1. Breach Status - Most Important (now with real backend data) */}
+          {/* 1. Breach Status - Real HaveIBeenPwned API Check */}
           <BreachStatus 
             analysis={analysis} 
             breachData={breachData} 
