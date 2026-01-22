@@ -7,7 +7,7 @@ import { Toaster } from './components/ui/sonner';
 function App() {
   return (
     <div className="App min-h-screen">
-      <BrowserRouter>
+      <BrowserRouter basename="/password-check-here">
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
