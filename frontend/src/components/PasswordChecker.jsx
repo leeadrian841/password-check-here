@@ -6,7 +6,7 @@ import { Input } from './ui/input';
 import { Progress } from './ui/progress';
 import StrengthMeter from './StrengthMeter';
 import BreachStatus from './BreachStatus';
-import AnalysisDetails from './AnalysisDetails';
+import SecurityIssues from './SecurityIssues';
 import BreachTimer from './BreachTimer';
 import { analyzePassword } from '../utils/passwordAnalyzer';
 import { toast } from 'sonner';
