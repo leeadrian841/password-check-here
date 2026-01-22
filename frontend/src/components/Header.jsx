@@ -12,7 +12,7 @@ export const Header = ({ isDark, toggleTheme }) => {
               <Shield className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">PassGuard AI</h1>
+              <h1 className="text-xl font-bold text-foreground">PasswordCheckHere</h1>
               <p className="text-xs text-muted-foreground">Security First</p>
             </div>
           </div>
