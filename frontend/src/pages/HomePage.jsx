@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import PasswordChecker from '../components/PasswordChecker';
-import FeatureCards from '../components/FeatureCards';
 import HowItWorks from '../components/HowItWorks';
 import Footer from '../components/Footer';
 
@@ -41,9 +40,6 @@ export default function HomePage() {
           <PasswordChecker />
         </div>
       </section>
-
-      {/* Features Section */}
-      <FeatureCards />
 
       {/* How It Works */}
       <HowItWorks />
