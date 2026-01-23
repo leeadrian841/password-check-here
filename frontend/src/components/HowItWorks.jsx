@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from './ui/card';
-import { ArrowRight } from 'lucide-react';
 
 export const HowItWorks = () => {
   const steps = [
@@ -12,12 +11,12 @@ export const HowItWorks = () => {
     {
       number: '02',
       title: 'Real-Time Analysis',
-      description: 'Our algorithm instantly analyzes length, character diversity, entropy, common patterns, and breach databases.',
+      description: 'Our algorithm instantly analyzes length, character diversity, entropy, common patterns and breach databases.',
     },
     {
       number: '03',
       title: 'Get Detailed Results',
-      description: 'See your password strength score, estimated crack time, vulnerabilities, and actionable suggestions for improvement.',
+      description: 'See your password strength score, estimated crack time, vulnerabilities and actionable suggestions for improvement.',
     },
     {
       number: '04',
@@ -34,7 +33,7 @@ export const HowItWorks = () => {
             How It Works
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Simple, fast, and completely private password analysis
+            Simple, fast and private password analysis
           </p>
         </div>
 
@@ -47,9 +46,6 @@ export const HowItWorks = () => {
                     <div className="text-5xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
                       {step.number}
                     </div>
-                    {index < steps.length - 1 && (
-                      <ArrowRight className="w-6 h-6 text-muted-foreground hidden lg:block absolute -right-10 top-8" />
-                    )}
                   </div>
                   <h3 className="text-xl font-semibold text-foreground">
                     {step.title}
