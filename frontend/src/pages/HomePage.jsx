@@ -31,8 +31,8 @@ export default function HomePage() {
             </h1>
             
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Advanced real-time analysis using AI patterns, breach detection, and character diversity scoring. 
-              See how long it would take AI to crack your password.
+              Advanced real-time analysis using brute force patterns, breach detection, and character diversity scoring. 
+              See how long it would take hackers or AI to crack your password.
             </p>
           </div>
           
