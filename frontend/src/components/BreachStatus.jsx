@@ -90,7 +90,6 @@ export const BreachStatus = ({ analysis, breachData, isCheckingBreach }) => {
                   </p>
                 )}
                 <p className="text-sm">
-                  This password has been found in known data breaches and is publicly available. 
                   Using this password puts your accounts at <span className="font-bold">extreme risk</span>.
                 </p>
                 <div className="mt-3 p-3 bg-red-500/20 rounded-lg border border-red-500/30">
@@ -119,7 +118,7 @@ export const BreachStatus = ({ analysis, breachData, isCheckingBreach }) => {
                   {apiChecked 
                     ? "This password was not found in the HaveIBeenPwned database of over 850 million breached passwords."
                     : "This password was not found in our breach database."}
-                  {" "}This is a good sign, but remember to still follow best practices for password security.
+                  {" "}This is a good sign, but remember to follow best practices for password security.
                 </p>
               </div>
             </AlertDescription>
