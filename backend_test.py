@@ -11,7 +11,7 @@ import time
 from typing import Dict, Any
 
 # Get backend URL from frontend .env file
-BACKEND_URL = "https://pwd-safety-check.preview.emergentagent.com"
+BACKEND_URL = "https://postcss-plugin-debug.preview.emergentagent.com"
 API_BASE = f"{BACKEND_URL}/api"
 
 def test_api_endpoint(endpoint: str, method: str = "GET", data: Dict[Any, Any] = None, expected_status: int = 200) -> Dict[Any, Any]:
