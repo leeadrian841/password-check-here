@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const isDevServer = mode === 'development';
   
   return {
-    plugins: [react()],
+    plugins: [tailwindcss(), react()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
