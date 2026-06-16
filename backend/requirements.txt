@@ -22,7 +22,7 @@ requests==2.33.1
 httpx==0.28.1
 pandas==3.0.2
 numpy==2.4.4
-python-multipart==0.0.27
+python-multipart==0.0.31
 jq==1.11.0
 typer==0.25.1
 emergentintegrations==0.1.1
